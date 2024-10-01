@@ -439,24 +439,57 @@ img {
   border-radius: .5rem;
 }
 
-/* ===== WORK =====*/
+/* ===== WORK ===== */
 .work__container {
-  row-gap: 2rem;
+  display: flex; /* Mantener display flex */
+  flex-wrap: wrap; /* Permitir que los elementos se ajusten a múltiples líneas */
+  justify-content: space-between; /* Distribuir espacio entre los elementos */
+  padding: 20px; /* Espaciado alrededor del contenedor */
+  max-width: 1200px; /* Ancho máximo del contenedor */
+  margin: 0 auto; /* Centrar el contenedor en la página */
 }
 
 .work__img {
   box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   overflow: hidden;
+  flex: 1 1 calc(30% - 20px); /* Ajustar el tamaño con un margen */
+  margin: 10px;
+  max-width: calc(30% - 20px); /* Ancho máximo para las imágenes */
+  position: relative;
+  height: 250px; /* Altura fija para las imágenes */
 }
 
 .work__img img {
-  transition: 1s;
+  width: 100%; /* Ocupar el 100% del ancho del contenedor */
+  height: 100%; /* Ocupar el 100% de la altura del contenedor */
+  object-fit: cover; /* Asegura que la imagen cubra todo el contenedor sin distorsión */
+  transition: transform 1s;
 }
 
-.work__img img:hover {
-  transform: scale(1.1);
+.work__img:hover img {
+  transform: scale(1.1); /* Efecto de aumento al pasar el cursor */
 }
+
+/* Asegurar que la clase "work__img" no exceda el tamaño de su contenedor */
+@media (max-width: 768px) {
+  .work__img {
+      flex: 1 1 calc(45% - 20px); /* Dos imágenes por fila en pantallas más pequeñas */
+      max-width: calc(45% - 20px); /* Ancho máximo */
+      height: 200px; /* Altura ajustada para pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .work__img {
+      flex: 1 1 calc(100% - 20px); /* Una imagen por fila en pantallas muy pequeñas */
+      max-width: calc(100% - 20px); /* Ancho máximo */
+      height: 150px; /* Altura ajustada para pantallas muy pequeñas */
+  }
+}
+
+
+
 
 /* ===== CONTACT =====*/
 .contact__input {
@@ -879,8 +912,6 @@ overflow: hidden;
 }
 
 
-/* CSS previo omitido */
-
 .card .content .details .description {
   display: none; /* Inicialmente oculto */
   color: #ffffff; /* Cambia el color según tu diseño */
@@ -890,7 +921,12 @@ overflow: hidden;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0; /* Inicialmente transparente */
-  transition: opacity 0.3s ease; /* Transición suave de opacidad */
+  transition: opacity 0.3s ease, bottom 0.3s ease; /* Transición suave de opacidad y posición */
+  padding: 10px; /* Espaciado interno para mejorar la apariencia */
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente para mejorar la legibilidad */
+  border-radius: 5px; /* Bordes redondeados */
+  width: 80%; /* Ancho de la descripción */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
 }
 
 .card:hover .content .details .description {
@@ -898,6 +934,7 @@ overflow: hidden;
   bottom: 10px; /* Ajusta la posición vertical según tu diseño */
   opacity: 1; /* Hacer la descripción visible */
 }
+
 
 
 /* CSS previo omitido */
